@@ -1,0 +1,102 @@
+# ==========================================
+# Mini Challenges (Part 3)
+# ==========================================
+
+# Mini Challenge #1: Print numbers from 1 through 10[cite: 1]
+for num in range(1, 11):
+    print(num, end=" ")
+
+
+# Mini Challenge #2: Print odd numbers from 1 through 15[cite: 1]
+for num in range(1, 16):
+    if num % 2 == 1:
+        print(num, end=" ")
+
+
+# Mini Challenge #3: Count backward from 10 to 1[cite: 1]
+for num in range(10, 0, -1):
+    print(num, end=" ")
+
+
+# ==========================================
+# Task 1 — get_sum(limit)[cite: 1]
+# ==========================================
+def get_sum(limit):
+    if not isinstance(limit, int) or limit < 0:
+        raise ValueError("Limit must be a non-negative integer.")
+
+    total = 0
+    for num in range(0, limit + 1):
+        total = total + num
+
+    return total
+
+
+print(get_sum(4))
+print(get_sum(0))
+
+
+# ==========================================
+# Task 2 — check_password(correct_password)[cite: 1]
+# ==========================================
+def check_password(correct_password):
+    while True:
+        attempt = input("Enter the password: ")
+        
+        # Reject blank input
+        if attempt.strip() == "":
+            print("Password cannot be blank. Try again.")
+            continue
+            
+        # Check if correct
+        if attempt == correct_password:
+            print("Access granted!")
+            break
+        else:
+            print("Incorrect password. Try again.")
+
+    return True
+
+
+# Run with a classroom demo password (uncomment to test interactively)
+# check_password("python8")
+
+
+# ==========================================
+# Task 3 — display_pattern(rows, columns)[cite: 1]
+# ==========================================
+def display_pattern(rows, columns):
+    if not isinstance(rows, int) or not isinstance(columns, int) or rows <= 0 or columns <= 0:
+        raise ValueError("Rows and columns must be positive integers.")
+        
+    for r in range(rows):
+        for c in range(columns):
+            print("*", end="")
+        print() # New line after each row
+
+
+print("\nDisplayed pattern:")
+display_pattern(7, 4)
+
+
+# ==========================================
+# Task 4 — skip_multiples(limit)[cite: 1]
+# ==========================================
+def skip_multiples(limit):
+    if not isinstance(limit, int) or limit < 0:
+        raise ValueError("Limit must be a non-negative integer.")
+        
+    result = []
+    for number in range(1, limit + 1):
+        if number % 3 == 0:
+            continue
+        result.append(number)
+        
+    return result
+
+
+print("Numbers from 1 through 15, skipping multiples of 3:")
+
+
+# Reflection:
+The `for` loop combined with `range()` is the most intuitive structure for me because it makes counting and iterating through a known sequence very straightforward. One question I still have is how best to optimize nested loops when handling large datasets, to avoid performance slowdowns.print(skip_multiples(15))
